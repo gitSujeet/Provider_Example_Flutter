@@ -16,9 +16,12 @@ class NumberHomepage extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: Center(
-        child: Text(
-          "Count: ${context.watch<NumberProvider>().count}",
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+        child: Consumer<NumberProvider>(
+          builder: (BuildContext context, NumberProvider numberProvider, Widget? child) =>
+           Text(
+            "Count: ${numberProvider.count}",
+            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
       floatingActionButton: Column(
