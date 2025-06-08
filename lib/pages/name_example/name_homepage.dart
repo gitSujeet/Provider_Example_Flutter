@@ -10,13 +10,19 @@ class NameHomepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Name Provider Example",style: TextStyle(fontWeight: FontWeight.bold),),
+        title: Text(
+          "Name Provider Example",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.blue,
       ),
       body: Center(
-        child: Text(
-          context.watch<UserProvider>().userName,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+        child: Consumer<UserProvider>(
+          builder:
+              (BuildContext context, nameProvider, Widget? child) => Text(
+                nameProvider.userName,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
+              ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -27,7 +33,7 @@ class NameHomepage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => UserSettings()),
           );
         },
-        child: Icon(Icons.settings,color: Colors.white,),
+        child: Icon(Icons.settings, color: Colors.white),
       ),
     );
   }
