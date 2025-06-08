@@ -23,9 +23,12 @@ class _UserSettingsState extends State<UserSettings> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Current User Name : ${context.watch<UserProvider>().userName}",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            Consumer<UserProvider>(
+              builder: (BuildContext context, UserProvider nameProvider, Widget? child)=>
+               Text(
+                "Current User Name : ${nameProvider.userName}",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
